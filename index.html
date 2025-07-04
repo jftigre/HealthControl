@@ -9,7 +9,29 @@
 </head>
 
 <body>
+
+    <header>
+        <nav class="navbar">
+            <h1 id="home">HealthControl</h1>
+            <ul class="nav_links">
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Remédios</a></li>
+                <li><a href="#">Lembretes</a></li>
+                <li><a href="#">Estoque</a></li>
+            </ul>
+
+            <button id="btn_dark_mode">
+                <img id="icon_tema" src="./assets/imagens/moon.svg" alt="Modo Escuro" width="25" height="25">
+            </button>
+        </nav>
+    </header>
+
     <div class="container">
+
+        <p id="mensagem_edicao"
+            style="display: none; background: yellow; color: red; font-weight: bold; padding: 10px;">
+            ✏️ Editando remédio...
+        </p>
 
         <form id="form_remedio">
             <div>
@@ -49,17 +71,49 @@
                 <button type="submit">Salvar dados</button>
             </div>
 
+            <div>
+                <button type="button" id="btn_cancelar_edicao" style="display: none;">Cancelar edição</button>
+            </div>
+
         </form>
 
-
-        <div id="lista_remedios">
+        <section id="secao_lista">
             <h2>Remédios cadastrados:</h2>
             <ul id="lista_itens"></ul>
-        </div>
+        </section>
 
     </div>
 
     <script src="/js/scripts.js" defer></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const btnToggle = document.getElementById('btn_dark_mode');
+            const iconTema = document.getElementById('icon_tema');
+            const body = document.body;
+
+            // Função que atualiza o ícone com base no tema
+            function atualizarIconeTema(isDark) {
+                iconTema.src = isDark ? './assets/imagens/sun.svg' : './assets/imagens/moon.svg';
+                iconTema.alt = isDark ? 'Modo Claro' : 'Modo Escuro';
+            }
+
+            // Aplicar tema salvo
+            const temaSalvo = localStorage.getItem('modo-escuro') === 'true';
+            if (temaSalvo) {
+                body.classList.add('dark-mode');
+            }
+            atualizarIconeTema(temaSalvo);
+
+            // Ao clicar no botão
+            btnToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                const isDark = body.classList.contains('dark-mode');
+                localStorage.setItem('modo-escuro', isDark ? 'true' : 'false');
+                atualizarIconeTema(isDark);
+            });
+        });
+    </script>
 
 </body>
 

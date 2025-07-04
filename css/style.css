@@ -1,27 +1,300 @@
+/* RESET GERAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* FUNDO E ESTRUTURA GERAL */
 body {
-    background: #378046;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 150%;
+  background-color: #2e7d32;
+  padding: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+body.dark-mode {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* BARRA DE NAVEGAÇÃO */
+.navbar {
+  background-color: #1b5e20;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  margin-bottom: 30px;
+}
+
+#home {
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+#home:hover {
+  color: #a5d6a7;
+  text-shadow: 0 0 6px #a5d6a7;
+}
+
+.nav_links {
+  display: flex;
+  list-style: none; /* remove os bullets */
+  gap: 25px;
+}
+
+.nav_links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 20px;
+  padding: 6px 10px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-radius: 6px;
+}
+
+.nav_links a:hover {
+  background-color: #2e7d32;
+  color: #a5d6a7;
+}
+
+/* BOTÃO DE AÇÃO NA NAVBAR */
+.btn-add {
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-add:hover {
+  background-color: #2e7d32;
+}
+
+/* CONTAINER PRINCIPAL */
 .container {
-    background-color: #fff;
-    border-radius: 15px;
-    margin: 15px;
-    max-width: 840px;
-    width: 100%;
-    box-sizing: 0 3px 5px rgba(0,0,0 0.5);
-    overflow: hidden;
+  max-width: 600px;
+  margin: auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.header {
-
+/* TÍTULOS */
+h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: #1b5e20;
 }
 
-.form {
-    padding: 20px;
+h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #2e7d32;
+}
+
+/* FORMULÁRIO */
+form div {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #000000;
+  border-radius: 6px;
+}
+
+/* BOTÕES GERAIS */
+button {
+  padding: 8px 12px;
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2e7d32;
+}
+
+/* BOTÃO CANCELAR EDIÇÃO */
+#btn_cancelar_edicao {
+  background-color: #c62828;
+}
+
+#btn_cancelar_edicao:hover {
+  background-color: #b71c1c;
+}
+
+/* MENSAGEM DE EDIÇÃO */
+#mensagem_edicao {
+  font-size: 15px;
+  padding: 10px 15px;
+  background-color: #d0f0c0;
+  border: 1.5px solid #4caf50;
+  color: #2e7d32;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 6px rgba(46, 125, 50, 0.3);
+  font-weight: 600;
+}
+
+/* SEÇÃO DE LISTA */
+#secao_lista {
+  max-width: 600px;
+  margin: 40px auto 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.08);
+}
+
+#secao_lista h2 {
+  color: #2e7d32;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+/* CARTÕES DE REMÉDIOS */
+.card-remedio {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  background-color: #f9f9f9;
+  border-left: 5px solid #2e7d32;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  list-style-type: none;
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+.card-conteudo p {
+  margin-bottom: 5px;
+}
+
+.card-botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-remedio button {
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.card-remedio button:hover {
+  background-color: #2e7d32;
+}
+
+/* Botão de modo escuro */
+#btn_dark_mode {
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#btn_dark_mode:hover {
+  transform: scale(1.2);
+}
+
+/* Modo escuro: aplicado quando a classe dark-mode está no body */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode .container,
+body.dark-mode #secao_lista {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+body.dark-mode .navbar {
+  background-color: #1f1f1f;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode label {
+  color: #a5d6a7;
+}
+
+body.dark-mode input {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #666;
+}
+
+body.dark-mode button,
+body.dark-mode .btn-add,
+body.dark-mode .card-remedio button {
+  background-color: #388e3c;
+  color: white;
+}
+
+body.dark-mode button:hover,
+body.dark-mode .btn-add:hover,
+body.dark-mode .card-remedio button:hover {
+  background-color: #2e7d32;
+}
+
+body.dark-mode .card-remedio {
+  background-color: #2a2a2a;
+  border-left: 5px solid #66bb6a;
+}
+
+body.dark-mode #mensagem_edicao {
+  background-color: #2f4f2f;
+  border: 1.5px solid #81c784;
+  color: #c8e6c9;
+}
+
+#btn_dark_mode {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  transition: transform 0.2s ease;
+}
+
+#btn_dark_mode img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(1.1);
+}
+
+#btn_dark_mode:hover {
+  transform: scale(1.2);
 }

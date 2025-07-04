@@ -1,10 +1,14 @@
-let indiceEdicao = null; //controla se estamos editando ou adicionando novo
+let indiceEdicao = null; // Controla se estamos editando ou adicionando novo
+
+const formulario = document.getElementById('form_remedio');
+const botaoCancelar = document.getElementById('btn_cancelar_edicao'); // Pega o botão de cancelar
+const mensagemEdicao = document.getElementById('mensagem_edicao');
 
 document.addEventListener('DOMContentLoaded', function () {
-    const formulario = document.getElementById('form_remedio');
 
+    // Quando o formulário for enviado
     formulario.addEventListener('submit', function (evento) {
-        evento.preventDefault();
+        evento.preventDefault(); // Evita o recarregamento da página
 
         // Captura os dados do formulário
         const nome = document.getElementById('input_nome_remedio').value;
@@ -27,59 +31,76 @@ document.addEventListener('DOMContentLoaded', function () {
         // Mostra o objeto no console
         console.log(remedio);
 
-        // Salva no localStorage
-        const remediosSalvos = JSON.parse(localStorage.getItem('remedios')) || []; //Busca os remédios antigos salvos
+        // Busca os remédios antigos salvos
+        const remediosSalvos = JSON.parse(localStorage.getItem('remedios')) || [];
 
         if (indiceEdicao !== null) {
             // Está editando → substitui o item no índice correto
             remediosSalvos[indiceEdicao] = remedio;
-            indiceEdicao = null; // volta ao modo de cadastro normal
+            indiceEdicao = null; // Volta ao modo de cadastro normal
         } else {
             // Está adicionando novo remédio
             remediosSalvos.push(remedio);
         }
 
-        localStorage.setItem('remedios', JSON.stringify(remediosSalvos)); //Salva novamente o array atualizado
+        // Salva novamente o array atualizado
+        localStorage.setItem('remedios', JSON.stringify(remediosSalvos));
 
-        // Limpa o formulário e avisa
+        // Limpa o formulário e esconde botão de cancelar
         formulario.reset();
+        botaoCancelar.style.display = 'none';
         alert('Remédio salvo com sucesso!');
         exibirRemedios();
     });
+
+    // Botão "Cancelar edição"
+    botaoCancelar.addEventListener('click', function () {
+        formulario.reset(); // Limpa os campos
+        mensagemEdicao.style.display = 'none'; // Esconde a mensagem de edição
+        indiceEdicao = null; // Volta ao modo de cadastro
+        botaoCancelar.style.display = 'none'; // Esconde o botão
+    });
+
+    // Exibe os remédios salvos na inicialização
     exibirRemedios();
 });
 
-//Lê os remédios que estão salvos no localStorage
+
+// Função para mostrar os remédios salvos na tela
 function exibirRemedios() {
     const lista = document.getElementById('lista_itens');
-    lista.innerHTML = ''; //Limpa o conteúdo antes de renderizar
+    lista.innerHTML = ''; // Limpa o conteúdo antes de renderizar
 
-    const remedios = JSON.parse(localStorage.getItem('remedios')) || []; //Busca os remédios salvos no localStorage. //Usa JSON.parse para transformar de string para array de objetos. //Se não existir nada salvo ainda, usa array vazio para evitar erro.
+    const remedios = JSON.parse(localStorage.getItem('remedios')) || [];
 
     remedios.forEach((remedio, index) => {
         const item = document.createElement('li');
 
-        //Mostra as informações do remédio
-        item.textContent = `${remedio.nome} (${remedio.quantidade} unidades) - Marca: ${remedio.marca}, Preço: R$${remedio.preco}, Validade: ${remedio.validade}`;
+        // Mostra as informações do remédio
+        item.innerHTML = `
+        <strong>${remedio.nome.toUpperCase()}</strong><br>
+        Marca: ${remedio.marca}<br>
+        Quantidade: ${remedio.quantidade}<br>
+        Preço: R$${remedio.preco}<br>
+        Validade: ${remedio.validade}
+        `;
 
-        //Cria o botão de excluir
+        // Botão de excluir
         const botaoExcluir = document.createElement('button');
         botaoExcluir.textContent = 'Excluir';
         botaoExcluir.style.marginLeft = '10px';
 
-        //Adiciona o comportamento de remover o remédio
         botaoExcluir.addEventListener('click', function () {
-            remedios.splice(index, 1); // remove 1 item na posição index
+            remedios.splice(index, 1); // Remove 1 item na posição index
             localStorage.setItem('remedios', JSON.stringify(remedios));
-            exibirRemedios(); // atualiza a lista na tela
+            exibirRemedios(); // Atualiza a lista
         });
 
-        // Cria botão de editar
+        // Botão de editar
         const botaoEditar = document.createElement('button');
         botaoEditar.textContent = 'Editar';
         botaoEditar.style.marginLeft = '10px';
 
-        // Ação ao clicar em Editar
         botaoEditar.addEventListener('click', function () {
             document.getElementById('input_nome_remedio').value = remedio.nome;
             document.getElementById('input_marca_remedio').value = remedio.marca;
@@ -89,13 +110,16 @@ function exibirRemedios() {
             document.getElementById('input_validade_remedio').value = remedio.validade;
 
             indiceEdicao = index; // Marca que estamos editando esse índice
+            document.getElementById('btn_cancelar_edicao').style.display = 'inline'; // Mostra botão de cancelar
+
+            mensagemEdicao.style.display = 'block'; // Mostra a mensagem de edição
         });
 
         // Adiciona os dois botões ao item
         item.appendChild(botaoExcluir);
         item.appendChild(botaoEditar);
 
-        //Adiciona o item completo à lista
+        // Adiciona o item completo à lista
         lista.appendChild(item);
-    }); //fecha o forEach
-} //fecha a função exibirRemedios
+    });
+}
