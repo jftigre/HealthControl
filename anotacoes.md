@@ -9,5 +9,9 @@
 – Script do JS incluído no final do HTML com defer
 – Próximo passo: capturar dados do formulário e salvar no localStorage
 
-ONDE PAREI:
-👉 “Vamos continuar a partir da parte de capturar os dados e salvar no localStorage.”
+📦 Como o localStorage funciona
+O localStorage só armazena strings, então:
+
+Para salvar um objeto → usamos JSON.stringify(objeto)
+
+Para ler de volta → usamos JSON.parse(string)

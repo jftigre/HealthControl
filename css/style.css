@@ -1,0 +1,27 @@
+body {
+    background: #378046;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 150%;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 15px;
+    margin: 15px;
+    max-width: 840px;
+    width: 100%;
+    box-sizing: 0 3px 5px rgba(0,0,0 0.5);
+    overflow: hidden;
+}
+
+.header {
+
+}
+
+.form {
+    padding: 20px;
+}
