@@ -2,119 +2,27 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>HealthControl</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>HealthControl</title>
 </head>
 
 <body>
-
-    <header>
-        <nav class="navbar">
-            <h1 id="home">HealthControl</h1>
-            <ul class="nav_links">
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Remédios</a></li>
-                <li><a href="#">Lembretes</a></li>
-                <li><a href="#">Estoque</a></li>
-            </ul>
-
-            <button id="btn_dark_mode">
-                <img id="icon_tema" src="./assets/imagens/moon.svg" alt="Modo Escuro" width="25" height="25">
-            </button>
-        </nav>
-    </header>
-
-    <div class="container">
-
-        <p id="mensagem_edicao"
-            style="display: none; background: yellow; color: red; font-weight: bold; padding: 10px;">
-            ✏️ Editando remédio...
-        </p>
-
-        <form id="form_remedio">
-            <div>
-                <h1>INFORMAÇÕES SOBRE O REMÉDIO</h1>
-                <h2>Adicione as informações</h2>
-            </div>
-            <div>
-                <label for="input_nome_remedio">Nome</label>
-                <input type="text" id="input_nome_remedio" required>
-            </div>
-
-            <div>
-                <label for="input_marca_remedio">Marca</label>
-                <input type="text" id="input_marca_remedio" required>
-            </div>
-
-            <div>
-                <label for="input_quantidade_remedio">Quantidade</label>
-                <input type="text" id="input_quantidade_remedio" required, min="1">
-            </div>
-
-            <div>
-                <label for="input_onde_comprou">Onde comprou</label>
-                <input type="text" id="input_onde_comprou" required>
-            </div>
-
-            <div>
-                <label for="input_preco_remedio">Preço</label>
-                <input type="number" id="input_preco_remedio" required, step="0.01">
-            </div>
-            <div>
-                <label for="input_validade_remedio">Validade</label>
-                <input type="date" id="input_validade_remedio" required>
-            </div>
-
-            <div>
-                <button type="submit">Salvar dados</button>
-            </div>
-
-            <div>
-                <button type="button" id="btn_cancelar_edicao" style="display: none;">Cancelar edição</button>
-            </div>
-
-        </form>
-
-        <section id="secao_lista">
-            <h2>Remédios cadastrados:</h2>
-            <ul id="lista_itens"></ul>
-        </section>
-
-    </div>
-
-    <script src="/js/scripts.js" defer></script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const btnToggle = document.getElementById('btn_dark_mode');
-            const iconTema = document.getElementById('icon_tema');
-            const body = document.body;
-
-            // Função que atualiza o ícone com base no tema
-            function atualizarIconeTema(isDark) {
-                iconTema.src = isDark ? './assets/imagens/sun.svg' : './assets/imagens/moon.svg';
-                iconTema.alt = isDark ? 'Modo Claro' : 'Modo Escuro';
-            }
-
-            // Aplicar tema salvo
-            const temaSalvo = localStorage.getItem('modo-escuro') === 'true';
-            if (temaSalvo) {
-                body.classList.add('dark-mode');
-            }
-            atualizarIconeTema(temaSalvo);
-
-            // Ao clicar no botão
-            btnToggle.addEventListener('click', () => {
-                body.classList.toggle('dark-mode');
-                const isDark = body.classList.contains('dark-mode');
-                localStorage.setItem('modo-escuro', isDark ? 'true' : 'false');
-                atualizarIconeTema(isDark);
-            });
-        });
-    </script>
-
+  <header>
+    <nav class="navbar">
+      <h1 id="home">HealthControl</h1>
+      <ul class="nav_links">
+        <li><a href="#">Início</a></li>
+        <li><a href="remedios.html" class="btn-add">Remédios</a></li>
+        <li><a href="#">Lembretes</a></li>
+        <li><a href="#">Estoque</a></li>
+      </ul>
+      <button id="btn_dark_mode" aria-label="Alternar modo escuro">
+        <img id="icon_tema" src="./assets/imagens/moon.svg" alt="Modo Escuro" />
+      </button>
+    </nav>
+  </header>
 </body>
 
 </html>

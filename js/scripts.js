@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // Função para mostrar os remédios salvos na tela
-function exibirRemedios() {
+function exibirRemedios(    ) {
     const lista = document.getElementById('lista_itens');
     lista.innerHTML = ''; // Limpa o conteúdo antes de renderizar
 
@@ -81,6 +81,7 @@ function exibirRemedios() {
         <strong>${remedio.nome.toUpperCase()}</strong><br>
         Marca: ${remedio.marca}<br>
         Quantidade: ${remedio.quantidade}<br>
+        Onde comprou: ${remedio.ondeComprou}<br>
         Preço: R$${remedio.preco}<br>
         Validade: ${remedio.validade}
         `;
@@ -118,8 +119,9 @@ function exibirRemedios() {
         // Adiciona os dois botões ao item
         item.appendChild(botaoExcluir);
         item.appendChild(botaoEditar);
-
+        
         // Adiciona o item completo à lista
         lista.appendChild(item);
+
     });
 }

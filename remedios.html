@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Remédios - HealthControl</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <h1 id="home">HealthControl</h1>
+      <ul class="nav_links">
+        <li><a href="index.html" class="btn-add">Início</a></li>
+        <li><a href="remedios.html" class="btn-add">Remédios</a></li>
+        <li><a href="#">Lembretes</a></li>
+        <li><a href="estoque.html" class="btn-add">Estoque</a></li>
+      </ul>
+      <button id="btn_dark_mode" aria-label="Alternar modo escuro">
+        <img id="icon_tema" src="./assets/imagens/moon.svg" alt="Modo Escuro" />
+      </button>
+    </nav>
+  </header>
+
+
+  <main class="container">
+    <p id="mensagem_edicao" class="mensagem-edicao" hidden>
+      ✏️ Editando remédio...
+    </p>
+
+    <form id="form_remedio" novalidate>
+      <header>
+        <h1>Informações sobre o remédio</h1>
+      </header>
+
+      <div>
+        <label for="input_nome_remedio">Nome</label>
+        <input type="text" id="input_nome_remedio" required />
+      </div>
+
+      <div>
+        <label for="input_marca_remedio">Marca</label>
+        <input type="text" id="input_marca_remedio" required />
+      </div>
+
+      <div>
+        <label for="input_quantidade_remedio">Quantidade</label>
+        <input type="number" id="input_quantidade_remedio" required min="1" />
+      </div>
+
+      <div>
+        <label for="input_onde_comprou">Onde comprou</label>
+        <input type="text" id="input_onde_comprou" required />
+      </div>
+
+      <div>
+        <label for="input_preco_remedio">Preço</label>
+        <input type="number" id="input_preco_remedio" required step="0.01" />
+      </div>
+
+      <div>
+        <label for="input_validade_remedio">Validade</label>
+        <input type="date" id="input_validade_remedio" required />
+      </div>
+
+      <div>
+        <button type="submit">💾 Salvar dados</button>
+      </div>
+
+      <div>
+        <button type="button" id="btn_cancelar_edicao" hidden>❌ Cancelar edição</button>
+      </div>
+    </form>
+
+    <section id="secao_lista">
+      <h2>Remédios cadastrados:</h2>
+      <ul id="lista_itens"></ul>
+    </section>
+  </main>
+
+  <script src="/js/scripts.js" defer></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const btnToggle = document.getElementById("btn_dark_mode");
+      const iconTema = document.getElementById("icon_tema");
+      const body = document.body;
+
+      function atualizarIconeTema(isDark) {
+        iconTema.src = isDark
+          ? "./assets/imagens/sun.svg"
+          : "./assets/imagens/moon.svg";
+        iconTema.alt = isDark ? "Modo Claro" : "Modo Escuro";
+      }
+
+      const temaSalvo = localStorage.getItem("modo-escuro") === "true";
+      if (temaSalvo) {
+        body.classList.add("dark-mode");
+      }
+      atualizarIconeTema(temaSalvo);
+
+      btnToggle.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+        const isDark = body.classList.contains("dark-mode");
+        localStorage.setItem("modo-escuro", isDark);
+        atualizarIconeTema(isDark);
+      });
+    });
+  </script>
+</body>
+
+</html>
