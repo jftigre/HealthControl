@@ -201,63 +201,60 @@ input {
   color: #2e7d32;
 }
 
-/* CARTÕES */
-.card-remedio {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 15px;
-  background-color: #f9f9f9;
-  border-left: 5px solid #2e7d32;
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  font-size: 15px;
-}
-
-.card-conteudo p {
-  margin-bottom: 5px;
-}
-
-.card-botoes {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
 /* MODO ESCURO */
 body.dark-mode {
   background-color: #121212;
   color: #e0e0e0;
 }
 
+/* NAVBAR */
+body.dark-mode .navbar {
+  background-color: #1f1f1f;
+  box-shadow: 0 6px 12px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .nav_links a {
+  color: #e0e0e0;
+}
+
+body.dark-mode .nav_links a:hover {
+  background-color: #2e7d32;
+  color: #c8e6c9;
+}
+
+/* TÍTULOS */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode label {
+  color: #ffffff;
+}
+
+/* CONTAINER PRINCIPAL */
 body.dark-mode .container,
 body.dark-mode #secao_lista {
   background-color: #1e1e1e;
   color: #e0e0e0;
-  box-shadow: 0 0 10px rgba(0,0,0,0.6);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.06);
 }
 
-body.dark-mode .navbar {
-  background-color: #1f1f1f;
-}
-
-body.dark-mode h1,
-body.dark-mode h2,
-body.dark-mode label {
-  color: #a5d6a7;
-}
-
+/* INPUTS */
 body.dark-mode input {
   background-color: #2c2c2c;
   color: #fff;
   border: 1px solid #555;
 }
 
+/* MENSAGEM DE EDIÇÃO */
+body.dark-mode #mensagem_edicao {
+  background-color: #2f4f2f;
+  border: 1.5px solid #81c784;
+  color: #c8e6c9;
+}
+
+/* BOTÕES GERAIS */
 body.dark-mode button,
 body.dark-mode .btn-add {
-  background-color: #388e3c;
+  background-color: #43a047;
   color: white;
 }
 
@@ -266,13 +263,124 @@ body.dark-mode .btn-add:hover {
   background-color: #2e7d32;
 }
 
-body.dark-mode .card-remedio {
-  background-color: #2a2a2a;
-  border-left: 5px solid #66bb6a;
+/* BOTÕES EDIT E DELETE */
+body.dark-mode .btn-edit {
+  background-color: #1565c0;
 }
 
-body.dark-mode #mensagem_edicao {
-  background-color: #2f4f2f;
-  border: 1.5px solid #81c784;
-  color: #c8e6c9;
+body.dark-mode .btn-edit:hover {
+  background-color: #0d47a1;
+}
+
+body.dark-mode .btn-delete {
+  background-color: #c62828;
+}
+
+body.dark-mode .btn-delete:hover {
+  background-color: #b71c1c;
+}
+
+/* BOTÃO MODO ESCURO */
+body.dark-mode #btn_dark_mode img {
+  filter: brightness(0.8);
+}
+
+/* CARD DE REMÉDIO */
+body.dark-mode .card-remedio {
+  background-color: #2a2a2a;
+  border: 2px solid #66bb6a;
+  color: #e0e0e0;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .card-remedio h3 {
+  color: #81c784;
+}
+
+body.dark-mode .card-remedio p {
+  color: #ccc;
+}
+
+/* Grade dos cartões */
+.estoque-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Faz os cards se adaptarem */
+  gap: 24px; /* Espaçamento entre cards */
+  padding: 20px;
+  justify-items: center; /* Centraliza os cards na célula do grid */
+  max-width: 1000px; /* Opcional: limita largura total */
+  margin: 0 auto; /* Centraliza o container na página */
+}
+
+/* Cada card */
+
+.card-remedio {
+  background-color: #ffffff;
+  border: 2px solid #2e7d32;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  width: 300px;   /* largura fixa */
+  height: 250px;  /* altura fixa */
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
+  transition: transform 0.2s ease;
+}
+
+.card-remedio:hover {
+  transform: scale(1.03);
+}
+
+.card-remedio h3 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.card-remedio p {
+  font-size: 0.9rem;
+  color: #444;
+  margin: 4px 0;
+}
+
+/* Botões fora do card */
+.botoes {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* Botões edit e delete */
+.botoes button {
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+}
+
+.botoes .btn-edit {
+  background-color: #1976d2;
+  color: white;
+}
+
+.botoes .btn-edit:hover {
+  background-color: #1565c0;
+}
+
+.botoes .btn-delete {
+  background-color: #d32f2f;
+  color: white;
+}
+
+.botoes .btn-delete:hover {
+  background-color: #c62828;
 }

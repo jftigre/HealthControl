@@ -3,26 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Remédios - HealthControl</title>
+  <title>Cadastro - HealthControl</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <header>
-    <nav class="navbar">
-      <h1 id="home">HealthControl</h1>
-      <ul class="nav_links">
-        <li><a href="index.html" class="btn-add">Início</a></li>
-        <li><a href="remedios.html" class="btn-add">Remédios</a></li>
-        <li><a href="#">Lembretes</a></li>
-        <li><a href="estoque.html" class="btn-add">Estoque</a></li>
-      </ul>
-      <button id="btn_dark_mode" aria-label="Alternar modo escuro">
-        <img id="icon_tema" src="./assets/imagens/moon.svg" alt="Modo Escuro" />
-      </button>
-    </nav>
-  </header>
-
+  <header id="navbar-container"></header>
 
   <main class="container">
     <p id="mensagem_edicao" class="mensagem-edicao" hidden>
@@ -31,7 +17,7 @@
 
     <form id="form_remedio" novalidate>
       <header>
-        <h1>Informações sobre o remédio</h1>
+        <h1>Cadastro do remédio</h1>
       </header>
 
       <div>
@@ -82,32 +68,15 @@
   <script src="/js/scripts.js" defer></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const btnToggle = document.getElementById("btn_dark_mode");
-      const iconTema = document.getElementById("icon_tema");
-      const body = document.body;
-
-      function atualizarIconeTema(isDark) {
-        iconTema.src = isDark
-          ? "./assets/imagens/sun.svg"
-          : "./assets/imagens/moon.svg";
-        iconTema.alt = isDark ? "Modo Claro" : "Modo Escuro";
-      }
-
-      const temaSalvo = localStorage.getItem("modo-escuro") === "true";
-      if (temaSalvo) {
-        body.classList.add("dark-mode");
-      }
-      atualizarIconeTema(temaSalvo);
-
-      btnToggle.addEventListener("click", () => {
-        body.classList.toggle("dark-mode");
-        const isDark = body.classList.contains("dark-mode");
-        localStorage.setItem("modo-escuro", isDark);
-        atualizarIconeTema(isDark);
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-container').innerHTML = data;
       });
-    });
   </script>
+  
+  <script src="js/modo-escuro.js"></script>
+
 </body>
 
 </html>
