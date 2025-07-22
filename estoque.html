@@ -11,7 +11,12 @@
     <header id="navbar-container"></header>
 
     <main>
-        <h1>📦 Estoque de Remédios</h1>
+        <h1>📦 Estoque de Remédios 
+            <div style="margin-bottom: 20px;">
+                <a href="cadastro.html" class="btn-add-remedio"><strong>+</strong> Adicionar novo remédio</a>
+            </div>
+        </h1>
+
         <div id="estoque-container" class="estoque-grid"></div>
     </main>
 
@@ -23,7 +28,7 @@
                 document.getElementById('navbar-container').innerHTML = data;
             });
     </script>
-    
+
     <script src="/js/estoque.js"></script>
 
     <script src="js/modo-escuro.js"></script>

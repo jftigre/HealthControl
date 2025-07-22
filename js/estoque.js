@@ -39,7 +39,7 @@ function excluirRemedio(index) {
 
 function editarRemedio(index) {
   // Vai para a página de cadastro com o índice do item na URL
-  window.location.href = `remedios.html?editar=${index}`;
+  window.location.href = `cadastro.html?editar=${index}`;
 }
 
 carregarEstoque();

@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lembretes - HealthControl</title>
   <link rel="stylesheet" href="css/style.css" />
-  <title>HealthControl</title>
 </head>
-
 <body>
   <header id="navbar-container"></header>
 
-  
-  
+  <main>
+    <h1>⏰ Lembretes de Remédios</h1>
+
+    <!-- Formulário para cadastrar novo lembrete -->
+    <form id="form-lembrete">
+      <input type="text" id="nome" placeholder="Nome do remédio" required />
+      <input type="time" id="horario" required />
+      <input type="text" id="dias" placeholder="Dias (ex: Segunda, Quarta)" required />
+      <input type="text" id="quantidade" placeholder="Quantidade (ex: 1 comprimido)" required />
+      <input type="text" id="observacoes" placeholder="Observações (opcional)" />
+      <button type="submit">Salvar Lembrete</button>
+    </form>
+
+    <!-- Container onde os lembretes aparecerão -->
+    <div id="lembretes-container" class="estoque-grid"></div>
+  </main>
+
   <script>
     fetch('navbar.html')
       .then(response => response.text())
@@ -20,9 +32,8 @@
         document.getElementById('navbar-container').innerHTML = data;
       });
   </script>
-
+  
+  <script src="js/lembretes.js"></script>
   <script src="js/modo-escuro.js"></script>
-
 </body>
-
 </html>
