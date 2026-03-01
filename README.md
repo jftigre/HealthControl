@@ -19,15 +19,6 @@ Seu foco é ser um app acessível, funcional e fácil de usar, mesmo por pessoas
 
 ---
 
-## 📸 Demonstração
-
-<div align="center">
-  <!-- Substitua o link abaixo por uma imagem real ou gif do app -->
-  <img src="https://via.placeholder.com/600x300.png?text=GIF+ou+Print+da+interface+do+HealthControl" alt="Demonstração do HealthControl" />
-</div>
-
----
-
 ## ⚙️ Funcionalidades
 
 - ✅ Adicionar/remover/editar medicamentos
